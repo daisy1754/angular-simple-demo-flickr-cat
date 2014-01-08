@@ -1,0 +1,22 @@
+<html ng-app="FlickrCatPhotos">
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="photo_controller.js"></script>
+  </head>
+  <body ng-controller="PhotoCtrl">
+    <h1>Cat photos</h1>
+    <div>
+      <label>Keyword: </label>
+      <input type="text" ng-model="keyword">
+      <button ng-click="doSearch()">Search</button>
+      <div ng-show="loadingIndicator"><img src="loading-indicator.gif"></div>
+      <div ng-show="photos">Filter: <input type="text" ng-model="filterWord"></div>
+      <div>
+        <div ng-repeat="photo in photos | filter:titleFilter">
+          <h2>{{photo.title}}</h2>
+          <img ng-src="http://farm{{photo.farm}}.static.flickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_m.jpg">
+        </div>
+      </div> 
+    </div>
+  </body>
+</html>
